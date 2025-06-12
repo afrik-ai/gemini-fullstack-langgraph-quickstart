@@ -4,7 +4,7 @@ help:
 	@echo "Available commands:"
 	@echo "  make dev-frontend    - Starts the frontend development server (Vite)"
 	@echo "  make dev-backend     - Starts the backend development server (Uvicorn with reload)"
-	@echo "  make dev             - Starts both frontend and backend development servers"
+	@echo "  make dev             - Starts frontend and backend dev servers concurrently"
 
 dev-frontend:
 	@echo "Starting frontend development server..."
@@ -17,4 +17,6 @@ dev-backend:
 # Run frontend and backend concurrently
 dev:
 	@echo "Starting both frontend and backend development servers..."
-	@make dev-frontend & make dev-backend 
+	@make dev-frontend & \
+	make dev-backend & \
+	wait
